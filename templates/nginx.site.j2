@@ -1,5 +1,5 @@
 # {{ ansible_managed }}
 
 server {
-  {{ item.value }}
+{{ item.value | indent(4, true) }}
 }
