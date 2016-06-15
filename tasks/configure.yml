@@ -8,11 +8,6 @@
     - "{{nginx_sites_enabled_dir}}/default"
     - "{{nginx_conf_dir}}/conf.d/default.conf"
 
-- name: Validate Nginx enabled sites
-  fail:
-    msg: "Invalid 'nginx_sites_enabled' configuration - enabled sites must be specified in 'nginx_sites_available'"
-  failed_when: "not ({{ nginx_sites_enabled | issubset(nginx_sites_available) }})"
-
 - name: Register enabled sites
   shell: ls -1 {{ nginx_sites_enabled_dir }} || true
   register: nginx_sites_enabled_all
