@@ -22,9 +22,9 @@
 - name: Copy available sites configuration
   template:
     src: nginx.site.j2
-    dest: "{{ nginx_sites_available_dir }}/{{ item }}"
+    dest: "{{ nginx_sites_available_dir }}/{{ item.key }}"
     backup: yes
-  with_items: "{{ nginx_sites }}"
+  with_dict: "{{ nginx_sites }}"
 
 - name: Symlink Nginx enabled sites
   file:
