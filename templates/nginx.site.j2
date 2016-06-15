@@ -1,7 +1,5 @@
 # {{ ansible_managed }}
 
 server {
-{% for content in nginx_sites[item] %}
-  {{ content }}
-{% endfor %}
+  {{ item }}
 }
